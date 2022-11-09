@@ -1,0 +1,9 @@
+h1 {text-align: center;}
+html{ 
+    background-image: radial-gradient(red, yellow); 
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+
+
+}
