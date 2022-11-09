@@ -1,7 +1,10 @@
 const DADO = Math.round(Math.random()*6)
+const FORMATO = "Poker"
 let apuesta;
 let valorDelDado; 
 let saldo=0
+
+
 
 
 validarEdad()
@@ -38,7 +41,8 @@ function seleccionarOperacion (){
     console.log("1-----Jugar.")
     console.log("2-----Ingresar dinero.")
     console.log("3-----Consultar saldo.")
-    console.log("4-----Salir.")
+    console.log("4-----Comprar.")
+    console.log("5-----Salir.")
     console.log("----------------")
     
     let operacion = Number(prompt("Que deseas realizar?"))
@@ -53,6 +57,8 @@ function seleccionarOperacion (){
             DineroEnCuenta() 
             break
         case 4:
+            Comprar(ARTICULOS)
+        case 5:
             Salir()   
         default:
             console.log("Operación invalida,intente nuevamente.")
@@ -76,6 +82,32 @@ function IngresarDinero (){
 function DineroEnCuenta(){
     console.log("Su saldo es de $"+saldo)
     seleccionarOperacion()
+}
+function Comprar(ARTICULOS) {
+    ARTICULOS.forEach( cartas  => {
+        console.log(`Tipo:${cartas.tipo} Marca:${cartas.marca} Formato:${cartas.formato} Precio:${cartas.precio} Cantidad:${cartas.cantidad} Plastificado:${cartas.plastificado}`) 
+    });
+    FiltrarArticulos()
+ 
+}
+function FiltrarArticulos(){
+    const Formato = ARTICULOS.filter(filtrarFormato)
+    if(Formato.length){ 
+        Comprar(Formato)}
+        else {
+            NoArticulos()
+        }
+
+    }
+
+function NoArticulos(){
+    console.log("No hay resultados")
+}
+function filtrarFormato (cartas){
+    if (FORMATO){
+        return cartas.FORMATO === FORMATO
+    }
+    return cartas;
 }
 function Salir(){
     alert("Fin del proceso.")
